@@ -37,17 +37,16 @@ public class MainApplication extends SmallApplication {
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
 		attr.minWidth = 384; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 128; /*The minimum height of the application, if it's resizable.*/
-		attr.width = 512;  /*The requested width of the application.*/
-		attr.height = 128;  /*The requested height of the application.*/
-		//		  attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
+		attr.minHeight = 256; /*The minimum height of the application, if it's resizable.*/
+		attr.width = 384;  /*The requested width of the application.*/
+		attr.height = 384;  /*The requested height of the application.*/
+		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
 		//        attr.flags |= SmallAppWindow.Attributes.FLAG_NO_TITLEBAR;  /*Use this flag to remove the titlebar from the window*/
 		//        attr.flags |= SmallAppWindow.Attributes.FLAG_HARDWARE_ACCELERATED;  /* Use this flag to enable hardware accelerated rendering*/
 
 		getWindow().setAttributes(attr); /*setting window attributes*/
 
 		findViewById(R.id.prev).setOnClickListener(new View.OnClickListener() {
-			@SuppressWarnings("unchecked")
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
@@ -55,7 +54,6 @@ public class MainApplication extends SmallApplication {
 		});
 
 		findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
-			@SuppressWarnings("unchecked")
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
@@ -63,10 +61,23 @@ public class MainApplication extends SmallApplication {
 		});
 
 		findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
-			@SuppressWarnings("unchecked")
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_NEXT);
+			}
+		});
+		
+		findViewById(R.id.volume_up).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
+			}
+		});
+		
+		findViewById(R.id.volume_down).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
 			}
 		});
 	}
