@@ -18,4 +18,11 @@
 -->
 <resources>
     <string name="app_name">Music Remote Small App</string>
+    
+    <string name="play">▶︎</string>
+    <string name="next">▶▶</string>
+    <string name="previous">◀◀︎</string>
+    <string name="up">＋︎</string>
+    <string name="down">ー︎</string>
+    <string name="minimize">.︎</string>
 </resources>

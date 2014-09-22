@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.sony.smallapp.SmallAppWindow;
 import com.sony.smallapp.SmallApplication;
+import com.sony.smallapp.SmallAppWindow.WindowState;
 
 public class MainApplication extends SmallApplication {
 
@@ -36,12 +37,12 @@ public class MainApplication extends SmallApplication {
 		setTitle(R.string.app_name);
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
-		attr.minWidth = 384; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 256; /*The minimum height of the application, if it's resizable.*/
-		attr.width = 384;  /*The requested width of the application.*/
-		attr.height = 384;  /*The requested height of the application.*/
+		attr.minWidth = 192; /* The minimum width of the application, if it's resizable.*/
+		attr.minHeight = 192; /*The minimum height of the application, if it's resizable.*/
+		attr.width = 256;  /*The requested width of the application.*/
+		attr.height = 256;  /*The requested height of the application.*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
-		//        attr.flags |= SmallAppWindow.Attributes.FLAG_NO_TITLEBAR;  /*Use this flag to remove the titlebar from the window*/
+		attr.flags |= SmallAppWindow.Attributes.FLAG_NO_TITLEBAR;  /*Use this flag to remove the titlebar from the window*/
 		//        attr.flags |= SmallAppWindow.Attributes.FLAG_HARDWARE_ACCELERATED;  /* Use this flag to enable hardware accelerated rendering*/
 
 		getWindow().setAttributes(attr); /*setting window attributes*/
@@ -67,17 +68,23 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 		
-		findViewById(R.id.volume_up).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.up).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
 			}
 		});
 		
-		findViewById(R.id.volume_down).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.down).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
+			}
+		});
+		
+		findViewById(R.id.minimize).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
 			}
 		});
 	}
