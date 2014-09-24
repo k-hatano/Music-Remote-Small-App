@@ -18,6 +18,7 @@
 package jp.nita.musicremotesmallapp;
 
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.KeyEvent;
 import android.view.View;
@@ -37,56 +38,118 @@ public class MainApplication extends SmallApplication {
 		setTitle(R.string.app_name);
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
-		attr.minWidth = 192; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 192; /*The minimum height of the application, if it's resizable.*/
-		attr.width = 256;  /*The requested width of the application.*/
-		attr.height = 256;  /*The requested height of the application.*/
+		attr.minWidth = 384; /* The minimum width of the application, if it's resizable.*/
+		attr.minHeight = 384; /*The minimum height of the application, if it's resizable.*/
+		attr.width = 384;  /*The requested width of the application.*/
+		attr.height = 384;  /*The requested height of the application.*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_NO_TITLEBAR;  /*Use this flag to remove the titlebar from the window*/
 		//        attr.flags |= SmallAppWindow.Attributes.FLAG_HARDWARE_ACCELERATED;  /* Use this flag to enable hardware accelerated rendering*/
 
 		getWindow().setAttributes(attr); /*setting window attributes*/
 
-		findViewById(R.id.prev).setOnClickListener(new View.OnClickListener() {
+		// small layout
+
+		findViewById(R.id.prev_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
 			}
 		});
 
-		findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.play_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
 			}
 		});
 
-		findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.next_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_MEDIA_NEXT);
 			}
 		});
-		
-		findViewById(R.id.up).setOnClickListener(new View.OnClickListener() {
+
+		findViewById(R.id.up_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
 			}
 		});
-		
-		findViewById(R.id.down).setOnClickListener(new View.OnClickListener() {
+
+		findViewById(R.id.down_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
 			}
 		});
-		
-		findViewById(R.id.minimize).setOnClickListener(new View.OnClickListener() {
+
+		findViewById(R.id.minimize_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
 			}
 		});
+
+		// large layout
+
+		findViewById(R.id.prev_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+			}
+		});
+
+		findViewById(R.id.play_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+			}
+		});
+
+		findViewById(R.id.stop_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_STOP);
+			}
+		});
+
+		findViewById(R.id.next_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_NEXT);
+			}
+		});
+
+		findViewById(R.id.up_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
+			}
+		});
+
+		findViewById(R.id.down_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
+			}
+		});
+
+		findViewById(R.id.home_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_HOME);
+				startActivity(intent);
+			}
+		});
+
+		findViewById(R.id.minimize_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				getWindow().setWindowState(WindowState.MINIMIZED);
+			}
+		});
+
 	}
 
 	@Override

@@ -16,110 +16,289 @@
  *  limitations under the License.
  */
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<jp.nita.musicremotesmallapp.SizeChangeListeningRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="false" 
-	android:focusableInTouchMode="false" >
+    android:layout_height="match_parent" >
 
-    <TableLayout
-        android:id="@+id/buttons_table"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
+    <RelativeLayout
+        android:id="@+id/small_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:focusable="false" 
-		android:focusableInTouchMode="false"
-        android:stretchColumns="0,1,2" >
+        android:layout_alignParentTop="true"
+        android:visibility="gone" >
 
-        <TableRow
+        <TableLayout
+            android:id="@+id/small_table"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1" >
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
 
-            <Button
-                android:background="@drawable/none"
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center" />
+                android:layout_weight="1" >
 
-            <Button
-                android:id="@+id/up"
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+
+                <ImageButton
+                    android:id="@+id/up_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/up" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/up"
-                android:gravity="center" />
+                android:layout_weight="1" >
 
-            <Button
-                android:background="@drawable/none"
+                <ImageButton
+                    android:id="@+id/prev_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/prev" />
+
+                <ImageButton
+                    android:id="@+id/play_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/play" />
+
+                <ImageButton
+                    android:id="@+id/next_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/next" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </TableRow>
+                android:layout_weight="1" >
 
-        <TableRow
+                <ImageButton
+                    android:id="@+id/minimize_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/minimize" />
+
+                <ImageButton
+                    android:id="@+id/down_small"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/down" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/large_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible" >
+
+        <TableLayout
+            android:id="@+id/large_table"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1" >
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
 
-            <Button
-                android:id="@+id/prev"
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/previous"
-                android:gravity="center" />
-            
-            <Button
-                android:id="@+id/play"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/play"
-                android:gravity="center" />
-            
-            <Button
-                android:id="@+id/next"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/next"
-                android:gravity="center" />
-        </TableRow>
-        
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" >
+                android:layout_weight="1" >
 
-            <Button
-                android:id="@+id/minimize"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/minimize"
-                android:gravity="center" />
-            
-            <Button
-                android:id="@+id/down"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/down"
-                android:gravity="center" />
-            
-            <Button
-                android:background="@drawable/none"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </TableRow>
-    </TableLayout>
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
 
-</RelativeLayout>
+                <ImageButton
+                    android:id="@+id/down_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/down" />
+                
+                <ImageButton
+                    android:id="@+id/up_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/up" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/prev_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/prev" />
+                
+                <ImageButton
+                    android:id="@+id/stop_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/stop" />
+
+                <ImageButton
+                    android:id="@+id/play_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/play" />
+
+                <ImageButton
+                    android:id="@+id/next_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/next" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/wifi_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/wifi" />
+
+                <ImageButton
+                    android:id="@+id/bluetooth_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/bluetooth" />
+                
+                <ImageButton
+                    android:id="@+id/rotate_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/rotate" />
+                
+                <ImageButton
+                    android:id="@+id/plane_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/plane" />
+
+            </TableRow>
+            
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/minimize_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/minimize" />
+
+                <ImageButton
+                    android:id="@+id/home_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/home" />
+                
+                <ImageButton
+                    android:id="@+id/sleep_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/sleep" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+</jp.nita.musicremotesmallapp.SizeChangeListeningRelativeLayout>
