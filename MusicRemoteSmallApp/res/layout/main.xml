@@ -16,11 +16,75 @@
  *  limitations under the License.
  */
 -->
-<jp.nita.musicremotesmallapp.SizeChangeListeningRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<jp.nita.musicremotesmallapp.SizeChangeListeningRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    tools:context=".MainApplication" >
+    
+    <RelativeLayout
+        android:id="@+id/tiny_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" >
+
+        <TableLayout
+            android:id="@+id/tiny_table"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+                
+                <ImageButton
+                    android:id="@+id/play_tiny"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/play" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/none"
+                    android:gravity="center" />
+            </TableRow>
+
+        </TableLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/small_layout"
@@ -30,7 +94,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:visibility="gone" >
+        android:visibility="visible" >
 
         <TableLayout
             android:id="@+id/small_table"
@@ -129,7 +193,7 @@
             </TableRow>
         </TableLayout>
     </RelativeLayout>
-    
+
     <RelativeLayout
         android:id="@+id/large_layout"
         android:layout_width="match_parent"
@@ -138,7 +202,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:visibility="visible" >
+        android:visibility="gone" >
 
         <TableLayout
             android:id="@+id/large_table"
@@ -168,7 +232,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/down" />
-                
+
                 <ImageButton
                     android:id="@+id/up_large"
                     android:layout_width="fill_parent"
@@ -197,7 +261,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/prev" />
-                
+
                 <ImageButton
                     android:id="@+id/stop_large"
                     android:layout_width="fill_parent"
@@ -243,7 +307,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/bluetooth" />
-                
+
                 <ImageButton
                     android:id="@+id/rotate_large"
                     android:layout_width="fill_parent"
@@ -251,7 +315,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/rotate" />
-                
+
                 <ImageButton
                     android:id="@+id/plane_large"
                     android:layout_width="fill_parent"
@@ -259,9 +323,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/plane" />
-
             </TableRow>
-            
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -282,7 +345,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/home" />
-                
+
                 <ImageButton
                     android:id="@+id/sleep_large"
                     android:layout_width="fill_parent"

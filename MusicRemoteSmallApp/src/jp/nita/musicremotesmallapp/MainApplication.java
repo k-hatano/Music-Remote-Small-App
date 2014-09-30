@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import com.sony.smallapp.SmallAppWindow;
+import com.sony.smallapp.SmallAppWindow.OnWindowStateChangeListener;
 import com.sony.smallapp.SmallApplication;
 import com.sony.smallapp.SmallAppWindow.WindowState;
 
@@ -38,8 +39,8 @@ public class MainApplication extends SmallApplication {
 		setTitle(R.string.app_name);
 
 		SmallAppWindow.Attributes attr = getWindow().getAttributes();
-		attr.minWidth = 384; /* The minimum width of the application, if it's resizable.*/
-		attr.minHeight = 384; /*The minimum height of the application, if it's resizable.*/
+		attr.minWidth = 256; /* The minimum width of the application, if it's resizable.*/
+		attr.minHeight = 256; /*The minimum height of the application, if it's resizable.*/
 		attr.width = 384;  /*The requested width of the application.*/
 		attr.height = 384;  /*The requested height of the application.*/
 		attr.flags |= SmallAppWindow.Attributes.FLAG_RESIZABLE;   /*Use this flag to enable the application window to be resizable*/
@@ -49,6 +50,13 @@ public class MainApplication extends SmallApplication {
 		getWindow().setAttributes(attr); /*setting window attributes*/
 
 		// small layout
+		
+		findViewById(R.id.play_tiny).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+			}
+		});
 
 		findViewById(R.id.prev_small).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -143,10 +151,24 @@ public class MainApplication extends SmallApplication {
 				startActivity(intent);
 			}
 		});
+		
+		findViewById(R.id.sleep_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_BACK);
+			}
+		});
 
 		findViewById(R.id.minimize_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
+			}
+		});
+		
+		getWindow().setOnWindowStateChangeListener(new OnWindowStateChangeListener(){
+			@Override
+			public void onWindowStateChanged(WindowState state) {
+				findViewById(R.id.layout).invalidate();
 			}
 		});
 
