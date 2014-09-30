@@ -25,4 +25,8 @@
     <string name="up">＋︎</string>
     <string name="down">ー︎</string>
     <string name="minimize">.︎</string>
+    
+    <string name="orientation_lock_off">Setting Orientation Lock to Off</string>
+    <string name="orientation_lock_on">Setting Orientation Lock to On</string>
+    
 </resources>

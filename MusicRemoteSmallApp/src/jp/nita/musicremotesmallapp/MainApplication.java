@@ -20,9 +20,13 @@ package jp.nita.musicremotesmallapp;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.sony.smallapp.SmallAppWindow;
 import com.sony.smallapp.SmallAppWindow.OnWindowStateChangeListener;
 import com.sony.smallapp.SmallApplication;
@@ -162,6 +166,22 @@ public class MainApplication extends SmallApplication {
 		findViewById(R.id.minimize_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				getWindow().setWindowState(WindowState.MINIMIZED);
+			}
+		});
+		
+		findViewById(R.id.rotate_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				try {
+					if (Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION) > 0){
+						Toast.makeText(v.getContext(), getString(R.string.orientation_lock_on), Toast.LENGTH_LONG).show();
+						Settings.System.putInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 0);
+					} else {
+						Toast.makeText(v.getContext(), getString(R.string.orientation_lock_off), Toast.LENGTH_LONG).show();
+						Settings.System.putInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 1);
+					}
+				} catch (SettingNotFoundException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		

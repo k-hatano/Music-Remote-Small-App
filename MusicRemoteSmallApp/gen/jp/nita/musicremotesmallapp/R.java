@@ -71,6 +71,8 @@ public final class R {
         public static final int down=0x7f040005;
         public static final int minimize=0x7f040006;
         public static final int next=0x7f040002;
+        public static final int orientation_lock_off=0x7f040007;
+        public static final int orientation_lock_on=0x7f040008;
         public static final int play=0x7f040001;
         public static final int previous=0x7f040003;
         public static final int up=0x7f040004;
