@@ -68,14 +68,18 @@ public final class R {
         public static final int main=0x7f030000;
     }
     public static final class string {
+        public static final int accelerometer_rotation_off=0x7f040007;
+        public static final int accelerometer_rotation_on=0x7f040008;
         public static final int app_name=0x7f040000;
+        public static final int bluetooth_off=0x7f04000b;
+        public static final int bluetooth_on=0x7f04000c;
         public static final int down=0x7f040005;
         public static final int minimize=0x7f040006;
         public static final int next=0x7f040002;
-        public static final int orientation_lock_off=0x7f040007;
-        public static final int orientation_lock_on=0x7f040008;
         public static final int play=0x7f040001;
         public static final int previous=0x7f040003;
         public static final int up=0x7f040004;
+        public static final int wifi_off=0x7f040009;
+        public static final int wifi_on=0x7f04000a;
     }
 }

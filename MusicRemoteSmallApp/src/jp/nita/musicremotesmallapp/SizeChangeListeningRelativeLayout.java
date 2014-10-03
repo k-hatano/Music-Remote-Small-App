@@ -18,11 +18,11 @@ public class SizeChangeListeningRelativeLayout extends RelativeLayout {
 	@Override
 	public void onSizeChanged(int xNew, int yNew, int xOld, int yOld){
 		super.onSizeChanged(xNew,yNew,xOld,yOld);
-		if(xNew>=512&&yNew>=512){
+		if(xNew>=544&&yNew>=544){
 			findViewById(R.id.tiny_layout).setVisibility(View.GONE);
 			findViewById(R.id.small_layout).setVisibility(View.GONE);
 			findViewById(R.id.large_layout).setVisibility(View.VISIBLE);
-		}else if(xNew>=384&&yNew>=384){
+		}else if(xNew>=320&&yNew>=320){
 			findViewById(R.id.tiny_layout).setVisibility(View.GONE);
 			findViewById(R.id.small_layout).setVisibility(View.VISIBLE);
 			findViewById(R.id.large_layout).setVisibility(View.GONE);

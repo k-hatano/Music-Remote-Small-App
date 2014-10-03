@@ -26,7 +26,11 @@
     <string name="down">ー︎</string>
     <string name="minimize">.︎</string>
     
-    <string name="orientation_lock_off">Setting Orientation Lock to Off</string>
-    <string name="orientation_lock_on">Setting Orientation Lock to On</string>
+    <string name="accelerometer_rotation_off">Setting Accelerometer Rotation to Off</string>
+    <string name="accelerometer_rotation_on">Setting Accelerometer Rotation to On</string>
+    <string name="wifi_off">Setting Wi-Fi to Off</string>
+    <string name="wifi_on">Setting Wi-Fi to On</string>
+    <string name="bluetooth_off">Setting Bluetooth to Off</string>
+    <string name="bluetooth_on">Setting Bluetooth to On</string>
     
 </resources>

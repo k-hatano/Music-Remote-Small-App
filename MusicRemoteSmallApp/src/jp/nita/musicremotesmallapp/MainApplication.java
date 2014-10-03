@@ -18,7 +18,9 @@
 package jp.nita.musicremotesmallapp;
 
 import android.app.Instrumentation;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -173,14 +175,40 @@ public class MainApplication extends SmallApplication {
 			public void onClick(View v) {
 				try {
 					if (Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION) > 0){
-						Toast.makeText(v.getContext(), getString(R.string.orientation_lock_on), Toast.LENGTH_LONG).show();
+						Toast.makeText(v.getContext(), getString(R.string.accelerometer_rotation_off), Toast.LENGTH_LONG).show();
 						Settings.System.putInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 0);
 					} else {
-						Toast.makeText(v.getContext(), getString(R.string.orientation_lock_off), Toast.LENGTH_LONG).show();
+						Toast.makeText(v.getContext(), getString(R.string.accelerometer_rotation_on), Toast.LENGTH_LONG).show();
 						Settings.System.putInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 1);
 					}
 				} catch (SettingNotFoundException e) {
 					e.printStackTrace();
+				}
+			}
+		});
+		
+		findViewById(R.id.wifi_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				WifiManager wifi = (WifiManager)getSystemService(WIFI_SERVICE);
+				if(wifi.isWifiEnabled()) {
+					Toast.makeText(v.getContext(), getString(R.string.wifi_off), Toast.LENGTH_LONG).show();
+					wifi.setWifiEnabled(false);
+				}else{
+					Toast.makeText(v.getContext(), getString(R.string.wifi_on), Toast.LENGTH_LONG).show();
+					wifi.setWifiEnabled(true);
+				}
+			}
+		});
+		
+		findViewById(R.id.bluetooth_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+				if(bluetooth.isEnabled()) {
+					Toast.makeText(v.getContext(), getString(R.string.bluetooth_off), Toast.LENGTH_LONG).show();
+					bluetooth.disable();
+				}else{
+					Toast.makeText(v.getContext(), getString(R.string.bluetooth_on), Toast.LENGTH_LONG).show();
+					bluetooth.enable();
 				}
 			}
 		});
