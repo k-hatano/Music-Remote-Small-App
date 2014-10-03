@@ -156,7 +156,7 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 		
-		findViewById(R.id.sleep_large).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.back_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_BACK);
