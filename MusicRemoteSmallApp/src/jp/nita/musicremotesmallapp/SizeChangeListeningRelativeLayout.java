@@ -21,15 +21,21 @@ public class SizeChangeListeningRelativeLayout extends RelativeLayout {
 		if(xNew>=544&&yNew>=544){
 			findViewById(R.id.tiny_layout).setVisibility(View.GONE);
 			findViewById(R.id.small_layout).setVisibility(View.GONE);
+			findViewById(R.id.large_layout).setVisibility(View.GONE);
+			
 			findViewById(R.id.large_layout).setVisibility(View.VISIBLE);
 		}else if(xNew>=320&&yNew>=320){
 			findViewById(R.id.tiny_layout).setVisibility(View.GONE);
-			findViewById(R.id.small_layout).setVisibility(View.VISIBLE);
-			findViewById(R.id.large_layout).setVisibility(View.GONE);
-		}else{
-			findViewById(R.id.tiny_layout).setVisibility(View.VISIBLE);
 			findViewById(R.id.small_layout).setVisibility(View.GONE);
 			findViewById(R.id.large_layout).setVisibility(View.GONE);
+			
+			findViewById(R.id.small_layout).setVisibility(View.VISIBLE);
+		}else{
+			findViewById(R.id.tiny_layout).setVisibility(View.GONE);
+			findViewById(R.id.small_layout).setVisibility(View.GONE);
+			findViewById(R.id.large_layout).setVisibility(View.GONE);
+			
+			findViewById(R.id.tiny_layout).setVisibility(View.VISIBLE);
 		}
 	}
 

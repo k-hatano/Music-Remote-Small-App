@@ -26,6 +26,7 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.BaseInputConnection;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public class MainApplication extends SmallApplication {
 		getWindow().setAttributes(attr); /*setting window attributes*/
 
 		// small layout
-		
+
 		findViewById(R.id.play_tiny).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
@@ -157,11 +158,11 @@ public class MainApplication extends SmallApplication {
 				startActivity(intent);
 			}
 		});
-		
-		findViewById(R.id.back_large).setOnClickListener(new View.OnClickListener() {
+
+		findViewById(R.id.call_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_BACK);
+				sender.execute(KeyEvent.KEYCODE_CALL);
 			}
 		});
 
@@ -170,7 +171,7 @@ public class MainApplication extends SmallApplication {
 				getWindow().setWindowState(WindowState.MINIMIZED);
 			}
 		});
-		
+
 		findViewById(R.id.rotate_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				try {
@@ -186,7 +187,7 @@ public class MainApplication extends SmallApplication {
 				}
 			}
 		});
-		
+
 		findViewById(R.id.wifi_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				WifiManager wifi = (WifiManager)getSystemService(WIFI_SERVICE);
@@ -199,7 +200,7 @@ public class MainApplication extends SmallApplication {
 				}
 			}
 		});
-		
+
 		findViewById(R.id.bluetooth_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
@@ -212,7 +213,7 @@ public class MainApplication extends SmallApplication {
 				}
 			}
 		});
-		
+
 		getWindow().setOnWindowStateChangeListener(new OnWindowStateChangeListener(){
 			@Override
 			public void onWindowStateChanged(WindowState state) {
@@ -240,8 +241,8 @@ public class MainApplication extends SmallApplication {
 	private class KeyEventSender extends AsyncTask<Integer, Object, Object> {
 		@Override
 		protected Object doInBackground(Integer... params) {
-			Instrumentation ist = new Instrumentation();
 			int keycode = (Integer)(params[0]);
+			Instrumentation ist = new Instrumentation();
 			ist.sendKeyDownUpSync(keycode);
 			return null;
 		}

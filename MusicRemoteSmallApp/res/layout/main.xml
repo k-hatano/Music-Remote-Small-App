@@ -21,6 +21,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainApplication" >
     
     <RelativeLayout
@@ -339,12 +340,12 @@
                     android:src="@drawable/minimize" />
                 
                 <ImageButton
-                    android:id="@+id/back_large"
+                    android:id="@+id/call_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/back" />
+                    android:src="@drawable/call" />
 
                 <ImageButton
                     android:id="@+id/home_large"
