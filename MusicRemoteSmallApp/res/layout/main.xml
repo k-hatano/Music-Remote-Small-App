@@ -232,7 +232,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/stop" />
+                    android:src="@drawable/pause" />
 
                 <ImageButton
                     android:id="@+id/play_large"
@@ -269,7 +269,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/prev" />
+                    android:src="@drawable/rewind" />
 
                 <ImageButton
                     android:id="@+id/forward_large"
@@ -277,7 +277,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/next" />
+                    android:src="@drawable/forward" />
 
                 <ImageButton
                     android:id="@+id/next_large"

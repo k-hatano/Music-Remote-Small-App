@@ -18,8 +18,11 @@
 package jp.nita.musicremotesmallapp;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Instrumentation;
+import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
@@ -29,6 +32,7 @@ import android.provider.Settings.SettingNotFoundException;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.BaseInputConnection;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -176,33 +180,33 @@ public class MainApplication extends SmallApplication {
 
 		findViewById(R.id.up_media_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_MUSIC);
-				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
+				AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+				manager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+		                AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
 			}
 		});
 
 		findViewById(R.id.down_media_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_MUSIC);
-				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
+				AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+				manager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+		                AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
 			}
 		});
 		
 		findViewById(R.id.up_ring_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_RING);
-				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
+				AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+				manager.adjustStreamVolume(AudioManager.STREAM_RING,
+		                AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
 			}
 		});
 
 		findViewById(R.id.down_ring_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_RING);
-				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
+				AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+				manager.adjustStreamVolume(AudioManager.STREAM_RING,
+		                AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
 			}
 		});
 
@@ -313,7 +317,8 @@ public class MainApplication extends SmallApplication {
 		protected Object doInBackground(Integer... params) {
 			int keycode = (Integer)(params[0]);
 			KeyEvent event = new KeyEvent(KeyEvent.ACTION_DOWN,keycode);
-			findViewById(R.id.layout).dispatchKeyEvent(event);
+			Instrumentation ist = new Instrumentation();
+			ist.sendKeySync(event);
 			return null;
 		}
 	}
@@ -323,7 +328,8 @@ public class MainApplication extends SmallApplication {
 		protected Object doInBackground(Integer... params) {
 			int keycode = (Integer)(params[0]);
 			KeyEvent event = new KeyEvent(KeyEvent.ACTION_UP,keycode);
-			findViewById(R.id.layout).dispatchKeyEvent(event);
+			Instrumentation ist = new Instrumentation();
+			ist.sendKeySync(event);
 			return null;
 		}
 	}
