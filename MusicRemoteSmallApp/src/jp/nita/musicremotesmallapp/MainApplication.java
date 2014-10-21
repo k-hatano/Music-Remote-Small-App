@@ -17,14 +17,17 @@
 
 package jp.nita.musicremotesmallapp;
 
+import android.app.Activity;
 import android.app.Instrumentation;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.BaseInputConnection;
 import android.widget.TextView;
@@ -118,7 +121,14 @@ public class MainApplication extends SmallApplication {
 		findViewById(R.id.play_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
-				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+				sender.execute(KeyEvent.KEYCODE_MEDIA_PLAY);
+			}
+		});
+		
+		findViewById(R.id.pause_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_MEDIA_PAUSE);
 			}
 		});
 
@@ -135,16 +145,62 @@ public class MainApplication extends SmallApplication {
 				sender.execute(KeyEvent.KEYCODE_MEDIA_NEXT);
 			}
 		});
+		
+		findViewById(R.id.rewind_large).setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction()==MotionEvent.ACTION_DOWN){
+					KeyDownEventSender sender = new KeyDownEventSender();
+					sender.execute(KeyEvent.KEYCODE_MEDIA_REWIND);
+				}else if(event.getAction()==MotionEvent.ACTION_UP){
+					KeyUpEventSender sender = new KeyUpEventSender();
+					sender.execute(KeyEvent.KEYCODE_MEDIA_REWIND);
+				}
+				return false;
+			}
+		});
+		
+		findViewById(R.id.forward_large).setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction()==MotionEvent.ACTION_DOWN){
+					KeyDownEventSender sender = new KeyDownEventSender();
+					sender.execute(KeyEvent.KEYCODE_MEDIA_FAST_FORWARD);
+				}else if(event.getAction()==MotionEvent.ACTION_UP){
+					KeyUpEventSender sender = new KeyUpEventSender();
+					sender.execute(KeyEvent.KEYCODE_MEDIA_FAST_FORWARD);
+				}
+				return false;
+			}
+		});
 
-		findViewById(R.id.up_large).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.up_media_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_MUSIC);
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
 			}
 		});
 
-		findViewById(R.id.down_large).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.down_media_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_MUSIC);
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
+			}
+		});
+		
+		findViewById(R.id.up_ring_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_RING);
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_VOLUME_UP);
+			}
+		});
+
+		findViewById(R.id.down_ring_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				((Activity)(v.getContext())).setVolumeControlStream(AudioManager.STREAM_RING);
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_VOLUME_DOWN);
 			}
@@ -159,12 +215,14 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 
+		/*
 		findViewById(R.id.call_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				KeyEventSender sender = new KeyEventSender();
 				sender.execute(KeyEvent.KEYCODE_CALL);
 			}
 		});
+		*/
 
 		findViewById(R.id.minimize_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -172,6 +230,7 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 
+		/*
 		findViewById(R.id.rotate_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				try {
@@ -213,6 +272,7 @@ public class MainApplication extends SmallApplication {
 				}
 			}
 		});
+		*/
 
 		getWindow().setOnWindowStateChangeListener(new OnWindowStateChangeListener(){
 			@Override
@@ -244,6 +304,26 @@ public class MainApplication extends SmallApplication {
 			int keycode = (Integer)(params[0]);
 			Instrumentation ist = new Instrumentation();
 			ist.sendKeyDownUpSync(keycode);
+			return null;
+		}
+	}
+	
+	private class KeyDownEventSender extends AsyncTask<Integer, Object, Object> {
+		@Override
+		protected Object doInBackground(Integer... params) {
+			int keycode = (Integer)(params[0]);
+			KeyEvent event = new KeyEvent(KeyEvent.ACTION_DOWN,keycode);
+			findViewById(R.id.layout).dispatchKeyEvent(event);
+			return null;
+		}
+	}
+	
+	private class KeyUpEventSender extends AsyncTask<Integer, Object, Object> {
+		@Override
+		protected Object doInBackground(Integer... params) {
+			int keycode = (Integer)(params[0]);
+			KeyEvent event = new KeyEvent(KeyEvent.ACTION_UP,keycode);
+			findViewById(R.id.layout).dispatchKeyEvent(event);
 			return null;
 		}
 	}

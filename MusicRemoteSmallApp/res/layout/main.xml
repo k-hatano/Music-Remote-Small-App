@@ -227,20 +227,20 @@
                     android:gravity="center" />
 
                 <ImageButton
-                    android:id="@+id/down_large"
+                    android:id="@+id/pause_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/down" />
+                    android:src="@drawable/stop" />
 
                 <ImageButton
-                    android:id="@+id/up_large"
+                    android:id="@+id/play_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/up" />
+                    android:src="@drawable/play" />
 
                 <Button
                     android:layout_width="fill_parent"
@@ -264,20 +264,20 @@
                     android:src="@drawable/prev" />
 
                 <ImageButton
-                    android:id="@+id/stop_large"
+                    android:id="@+id/rewind_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/stop" />
+                    android:src="@drawable/prev" />
 
                 <ImageButton
-                    android:id="@+id/play_large"
+                    android:id="@+id/forward_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/play" />
+                    android:src="@drawable/next" />
 
                 <ImageButton
                     android:id="@+id/next_large"
@@ -294,36 +294,36 @@
                 android:layout_weight="1" >
 
                 <ImageButton
-                    android:id="@+id/wifi_large"
+                    android:id="@+id/down_media_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/wifi" />
+                    android:src="@drawable/down" />
 
                 <ImageButton
-                    android:id="@+id/bluetooth_large"
+                    android:id="@+id/up_media_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/bluetooth" />
+                    android:src="@drawable/up" />
 
                 <ImageButton
-                    android:id="@+id/rotate_large"
+                    android:id="@+id/down_ring_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/rotate" />
+                    android:src="@drawable/down" />
 
                 <ImageButton
-                    android:id="@+id/plane_large"
+                    android:id="@+id/up_ring_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/plane" />
+                    android:src="@drawable/up" />
             </TableRow>
 
             <TableRow
@@ -340,12 +340,12 @@
                     android:src="@drawable/minimize" />
                 
                 <ImageButton
-                    android:id="@+id/call_large"
+                    android:id="@+id/stop_large"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:src="@drawable/call" />
+                    android:src="@drawable/stop" />
 
                 <ImageButton
                     android:id="@+id/home_large"
