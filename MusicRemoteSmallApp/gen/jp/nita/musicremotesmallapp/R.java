@@ -40,33 +40,38 @@ public final class R {
         public static final int wifi=0x7f020014;
     }
     public static final class id {
+        public static final int bluetooth_large=0x7f06001b;
         public static final int down_media_large=0x7f060014;
         public static final int down_ring_large=0x7f060016;
         public static final int down_small=0x7f06000b;
         public static final int forward_large=0x7f060012;
-        public static final int home_large=0x7f06001a;
+        public static final int home_large=0x7f06001f;
+        public static final int huge_large_layout=0x7f060018;
         public static final int large_layout=0x7f06000c;
         public static final int large_table=0x7f06000d;
         public static final int layout=0x7f060000;
-        public static final int minimize_large=0x7f060018;
+        public static final int minimize_large=0x7f06001d;
         public static final int minimize_small=0x7f06000a;
         public static final int next_large=0x7f060013;
         public static final int next_small=0x7f060009;
         public static final int pause_large=0x7f06000e;
+        public static final int plane_large=0x7f06001c;
         public static final int play_large=0x7f06000f;
         public static final int play_small=0x7f060008;
         public static final int play_tiny=0x7f060003;
         public static final int prev_large=0x7f060010;
         public static final int prev_small=0x7f060007;
         public static final int rewind_large=0x7f060011;
+        public static final int rotate_large=0x7f060019;
         public static final int small_layout=0x7f060004;
         public static final int small_table=0x7f060005;
-        public static final int stop_large=0x7f060019;
+        public static final int stop_large=0x7f06001e;
         public static final int tiny_layout=0x7f060001;
         public static final int tiny_table=0x7f060002;
         public static final int up_media_large=0x7f060015;
         public static final int up_ring_large=0x7f060017;
         public static final int up_small=0x7f060006;
+        public static final int wifi_large=0x7f06001a;
     }
     public static final class layout {
         public static final int main=0x7f030000;

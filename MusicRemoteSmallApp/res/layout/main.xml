@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".MainApplication" >
-    
+
     <RelativeLayout
         android:id="@+id/tiny_layout"
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1" >
-                
+
                 <ImageButton
                     android:id="@+id/play_tiny"
                     android:layout_width="fill_parent"
@@ -83,7 +83,6 @@
                     android:background="@drawable/none"
                     android:gravity="center" />
             </TableRow>
-
         </TableLayout>
     </RelativeLayout>
 
@@ -327,6 +326,45 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/huge_large_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/rotate_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/rotate" />
+
+                <ImageButton
+                    android:id="@+id/wifi_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/wifi" />
+                
+                <ImageButton
+                    android:id="@+id/bluetooth_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/bluetooth" />
+
+                <ImageButton
+                    android:id="@+id/plane_large"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:src="@drawable/plane" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1" >
@@ -338,7 +376,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/minimize" />
-                
+
                 <ImageButton
                     android:id="@+id/stop_large"
                     android:layout_width="fill_parent"

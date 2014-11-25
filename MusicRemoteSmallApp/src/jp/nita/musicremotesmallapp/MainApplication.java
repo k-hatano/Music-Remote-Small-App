@@ -150,6 +150,13 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 		
+		findViewById(R.id.plane_large).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				KeyEventSender sender = new KeyEventSender();
+				sender.execute(KeyEvent.KEYCODE_ESCAPE);
+			}
+		});
+		
 		findViewById(R.id.rewind_large).setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -234,7 +241,6 @@ public class MainApplication extends SmallApplication {
 			}
 		});
 
-		/*
 		findViewById(R.id.rotate_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				try {
@@ -276,7 +282,6 @@ public class MainApplication extends SmallApplication {
 				}
 			}
 		});
-		*/
 
 		getWindow().setOnWindowStateChangeListener(new OnWindowStateChangeListener(){
 			@Override
