@@ -24,9 +24,12 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.IBinder;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.view.KeyEvent;
@@ -36,6 +39,9 @@ import android.view.Window;
 import android.view.inputmethod.BaseInputConnection;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import com.sony.smallapp.SmallAppWindow;
 import com.sony.smallapp.SmallAppWindow.OnWindowStateChangeListener;
@@ -219,10 +225,41 @@ public class MainApplication extends SmallApplication {
 
 		findViewById(R.id.home_large).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_MAIN);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addCategory(Intent.CATEGORY_HOME);
-				startActivity(intent);
+				getWindow().setWindowState(WindowState.MINIMIZED);
+				
+				long downTime = SystemClock.uptimeMillis();
+				long eventTime = SystemClock.uptimeMillis() + 100;
+
+				ClassLoader loader = ClassLoader.getSystemClassLoader();
+				try {
+					Class serviceManagerClazz = loader.loadClass("android.os.ServiceManager");
+					Method getServiceMethod = serviceManagerClazz.getMethod("getService", String.class);
+					Object windowObj = getServiceMethod.invoke(null, "window");
+					Class windowManagerStubClazz = loader.loadClass("android.view.IWindowManager$Stub");
+					Method asInterfaceMethod = windowManagerStubClazz.getMethod("asInterface", IBinder.class);
+					Object iwindowObj = asInterfaceMethod.invoke(null, windowObj);
+					Class windowManagerClazz = loader.loadClass("android.view.IWindowManager");
+
+					Method method = windowManagerClazz.getMethod("injectKeyEvent", KeyEvent.class, boolean.class);
+					method.invoke(iwindowObj, new KeyEvent( KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_PAGE_UP), true);
+					method.invoke(iwindowObj, new KeyEvent( KeyEvent.ACTION_UP, KeyEvent.KEYCODE_PAGE_UP), true);
+
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
